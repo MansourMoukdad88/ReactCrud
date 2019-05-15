@@ -1,10 +1,11 @@
 import React from 'react';
 
-const CourseForm = () => {
+const CourseForm = (props) => {
     return (
-        <div>
-            <h2>Form</h2>
-        </div>
+        <form onSubmit={props.add}>
+            <input type="text" onChange={props.update}/>
+            <button type="submit">Add Course</button>
+        </form>
     )
 }
 
