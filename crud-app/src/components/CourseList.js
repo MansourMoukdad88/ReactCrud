@@ -5,9 +5,11 @@ import React, {Component} from 'react';
 class CourseList extends Component {
     render(){
   return (
-    <section className="App">
-    <h1>CourseList</h1>
-    </section>
+    <React.Fragment>
+    <li>
+      {this.props.details}
+    </li>
+    </React.Fragment>
   );
 }
 }
