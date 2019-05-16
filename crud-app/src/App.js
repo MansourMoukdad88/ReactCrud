@@ -46,7 +46,7 @@ class App extends Component{
   render() {
     const {courses} = this.state;
     const courseList = courses.map((course, index) =>{
-      return <CourseList key={index} index={index} details={course.name} delete={this.deleteCourse}/>
+      return <CourseList key={index} index={index} details={course} delete={this.deleteCourse}/>
     })
     return (
       <section className="App">
