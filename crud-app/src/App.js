@@ -65,7 +65,7 @@ class App extends Component{
     })
     return (
       <section className="App">
-        <h1>Add Course</h1>
+        <h2>Add Course</h2>
           <CourseForm current={this.state.current} update={this.updateCourse} add={this.addCourse} />
         <ul>{courseList}</ul>
       </section>
