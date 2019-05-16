@@ -6,6 +6,7 @@ import CourseList from './components/CourseList';
 
 
 class App extends Component{
+
   state = {
     courses: [
       {name: "HTML"},
@@ -43,10 +44,24 @@ class App extends Component{
     })
   }
 
+  // edit course
+  editCourse = (index, value) =>{
+    let courses = this.state.courses;
+    let course = courses[index];
+    console.log("course", course)
+    console.log("coursesss", courses)
+
+    course['name'] = value;
+    this.setState({
+      courses: courses
+    })
+
+  }
+
   render() {
     const {courses} = this.state;
     const courseList = courses.map((course, index) =>{
-      return <CourseList key={index} index={index} details={course} delete={this.deleteCourse}/>
+      return <CourseList key={index} index={index} details={course} update={this.handleChange} delete={this.deleteCourse} editCourse={this.editCourse}/>
     })
     return (
       <section className="App">

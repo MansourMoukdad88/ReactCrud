@@ -13,7 +13,7 @@ class CourseList extends Component {
     return (
       <li>
       <span>{this.props.details.name}</span>
-      <button onClick={()=> {this.toggleState()}}>Edit Course</button>
+      <button onClick={()=> {this.toggleState()}} >Edit Course</button>
       <button onClick={() => { this.props.delete(this.props.index)}}>Delete Courses</button>
     </li>
     )
@@ -27,11 +27,18 @@ class CourseList extends Component {
     })
   }
 
+  updateCourseItem = (e) => {
+    e.preventDefault();
+    console.log(this.props)
+    this.props.editCourse(this.props.index, this.input.value)
+    //! I stuck here for two hour, the reason is I type `this.props.value` instead of `this.input.value` !!! 
+    this.toggleState()
+  }
   // render update form 
-  renderUpdateCourse(){
+  renderUpdateForm(){
     return (
-      <form>
-        <input type="text" defaultValue={this.props.details.name}/>
+      <form onSubmit={this.updateCourseItem}>
+        <input type="text" ref={(v) => {this.input = v}} defaultValue={this.props.details.name}/>
         <button>Update Course</button>
       </form>
     )
@@ -41,7 +48,7 @@ class CourseList extends Component {
     return (
       <Fragment>
         
-      { isEdit ? this.renderUpdateCourse() : this.renderCourse()}
+      { isEdit ? this.renderUpdateForm() : this.renderCourse()}
       </Fragment>
     );
   }
